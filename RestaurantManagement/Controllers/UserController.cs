@@ -60,9 +60,32 @@ namespace RestaurantManagement.Controllers
             return View();
         }
 
-        public IActionResult LoginUser(string email, string password)
+        public IActionResult LoginUser(string userEmail, string userPassword)
         {
             //var user = _context.Users.;
+            var user =  _context.Users
+                .FirstOrDefault(m => m.Email == userEmail && m.Password == userPassword);
+
+            if(user != null)
+            {
+                // setting session for login
+                HttpContext.Session.SetString("SUserName", user.UserName);
+                HttpContext.Session.SetString("SUserId", user.UserId.ToString());
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewBag.errMsg = "No Such User Found";
+                return View("Login");
+            }
+        }
+
+        public IActionResult Logout()
+        {
+            // delete session info
+            HttpContext.Session.Clear();
+
             return RedirectToAction(nameof(Index));
         }
     }
