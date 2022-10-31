@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+    if(Accessor.HttpContext.Session.GetString("SUserName") != null)
+    {
+        <h1>@Accessor.HttpContext.Session.GetString("SUserName")</h1>
+    }
+    else
+    {
+        <p>No User Signed In</p>
+    }
+     
+}
+
+<h1>@Accessor.HttpContext.Session.GetString("SUserName")</h1>
