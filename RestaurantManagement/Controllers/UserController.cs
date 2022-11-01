@@ -14,6 +14,7 @@ namespace RestaurantManagement.Controllers
         }
 
         public IActionResult Index()
+
         {
             return View();
         }

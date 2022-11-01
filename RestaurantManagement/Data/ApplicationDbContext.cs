@@ -11,5 +11,8 @@ namespace RestaurantManagement.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
+
     }
 }

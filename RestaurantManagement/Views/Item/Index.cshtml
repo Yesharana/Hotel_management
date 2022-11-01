@@ -1,0 +1,81 @@
+﻿@model List<Item>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+	<fieldset>
+    <legend>Restaurant</legend>
+    <div class="container">
+        <form asp-controller="Item" asp-action="addItem" method="post" >
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                   <label for="items">Items:</label>
+                       <div class="form-group">
+                            <select name="item" id="items">
+                              <option value="volvo">Volvo</option>
+                                @foreach(var item in @Model)
+                                {
+                                    <option value="@item.ItemName">@item.ItemName</option>
+                                }
+                            </select>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="delivery">Delivery Type:</label>
+                    <select name="delivery" id="delivery">
+                        <option value="Dine In">Dine In</option>
+                        <option value="Tack Away">Tack Away</option>
+                               
+                    </select>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div>
+            Quantity:
+            <input type="number" name="quantity" id="quantity" />
+        </div>
+
+        <input type="submit" name="submit" value="submit" />
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                </tr>
+            </thead>
+        @if(ViewBag.orderedItems != null)
+        {
+            @foreach(var item in ViewBag.orderedItems)
+            {
+                <tr>
+                    <td>@item.OrderedItem</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice</td>
+
+                    <td>
+                        <form asp-controller="Item" asp-action="RemoveOrderedItem" method="post">
+                            <input type="hidden" name="ItemName" value="@item.OrderedItem">
+                            <button type="submit" class="btn btn-primary">Remove</button>                   
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        </table>
+
+
+    </div>
+</fieldset>
