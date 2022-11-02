@@ -8,8 +8,7 @@ namespace RestaurantManagement.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "PaymentTypes");
+       
 
             migrationBuilder.CreateTable(
                 name: "OrderItem",

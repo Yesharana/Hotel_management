@@ -25,7 +25,7 @@ namespace RestaurantManagement.Controllers
             return View(Items);           
         }
 
-        public IActionResult addItem(string item, string delivery, int quantity)
+        public IActionResult addItem(string item, int quantity)
         {
 
             var item_ = _context.Items
@@ -42,10 +42,38 @@ namespace RestaurantManagement.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult RemoveOrderedItem(string ItemName)
+        public IActionResult RemoveOrderedItem(string ItemName, int ItemQua)
         {
-            var ItemToRemove = OItems.Single(i => i.OrderedItem == ItemName);
+            var ItemToRemove = OItems.First(i => i.OrderedItem == ItemName && i.Quantity == ItemQua);
             OItems.Remove(ItemToRemove);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult AddOrder(string customerName, string delivery)
+        {
+            //create Order
+            //OrderItems, OrderType, CustomerName, OrderStatus, PaymentStatus
+            var OStatus = false;
+            if(delivery == "Dine In")
+            {
+                OStatus = true;
+            }
+
+            var newOrder = new Order() {
+                OrderItems = OItems,
+                OrderType = delivery,
+                CustomerName = customerName,
+                OrderStatus = OStatus,
+                PaymentStatus = false,
+            };
+
+            // add & save Order to database
+            _context.Orders.Add(newOrder);
+            _context.SaveChanges();
+
+            // empty the OItem list
+            OItems.Clear();
+
             return RedirectToAction(nameof(Index));
         }
 

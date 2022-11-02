@@ -3,7 +3,7 @@
     public class Order
     {
         public int OrderId { get; set; }
-        public int TableNumber { get; set; }
+        //public int? TableNumber { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
         public string OrderType { get; set; }
         public string CustomerName { get; set; }
