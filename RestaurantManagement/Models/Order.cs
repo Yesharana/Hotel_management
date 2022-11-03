@@ -9,5 +9,6 @@
         public string CustomerName { get; set; }
         public bool OrderStatus { get; set; }
         public bool PaymentStatus { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 }

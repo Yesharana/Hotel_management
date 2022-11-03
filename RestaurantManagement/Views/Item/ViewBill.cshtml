@@ -1,0 +1,31 @@
+﻿@model Order
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+    <p>@Model.OrderId</p>
+    <p>@ViewBag.ordItems.Count</p>
+    <table class="table table-striped">      
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Amount</th>
+            </tr>      
+            @foreach(var item in @ViewBag.ordItems)
+            {
+                <tr>
+                    <td>@item.OrderedItem</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice</td>
+                    <td></td>
+                    
+                </tr>
+            }
+        
+    </table>
+</div>

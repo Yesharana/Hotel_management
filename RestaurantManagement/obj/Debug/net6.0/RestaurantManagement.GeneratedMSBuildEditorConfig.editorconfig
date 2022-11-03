@@ -27,6 +27,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/ViewAllOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxWaWV3QWxsT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/ViewBill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxWaWV3QmlsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/ViewPendingOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxWaWV3UGVuZGluZ09yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/ViewPendingPayments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxWaWV3UGVuZGluZ1BheW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

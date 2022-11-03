@@ -23,7 +23,17 @@
     }
 </script>
 
+@if(ViewBag.isEmptyOrderList == true)
+{
 
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>No Order Items</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+}
+
+    
 <fieldset class="m-3">
     <legend>Restaurant</legend>
     <div class="container">
@@ -31,8 +41,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                   <label for="items">Items:</label>
-                       <div class="form-group">
+                    <label for="items">Items:</label>
+                        <div class="form-group">
                             <select name="item" id="items">
                               
                                 @foreach(var item in @Model)
@@ -46,7 +56,7 @@
 
             <div class="col-md-4">
                 Quantity:
-                <input type="number" name="quantity" id="quantity" />
+                <input type="number" name="quantity" id="quantity" min="1" max="20"/>
             </div>
         </div>
 
@@ -68,12 +78,12 @@
                     <!-- Hidden fields
                     <input type="hidden" name="orderStatus" value="0" />
                     <input type="hidden" name="paymentStatus" value="0" />
-                     -->
+                        -->
 
                     <div class="col-md-4">
                         <div class="form-group">
                     
-                            <input type="text" name="customerName" id="CustomerName" class="form-control" placeholder="Customer Name"/>
+                            <input type="text" name="customerName" id="CustomerName" class="form-control" placeholder="Customer Name" required/>
                         </div>
                     </div>
                      
