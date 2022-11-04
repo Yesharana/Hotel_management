@@ -23,8 +23,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/AddNewItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxBZGROZXdJdGVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/ViewAllItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxWaWV3QWxsSXRlbXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SEM-V/WDDN(C\# & .Net)/RestaurantManagement/RestaurantManagement/Views/Item/ViewAllOrders.cshtml]

@@ -1,0 +1,116 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+ 
+}
+@if(Accessor.HttpContext.Session.GetString("SUserName") != null)
+{
+    
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                
+                <th>Price</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!--
+            <tr colspan=3 ><h2>Soup</h2></tr>
+            @*@foreach(var item in @ViewBag.Soup)
+            {
+                <tr>
+                    <td>@item.ItemName </td>
+                    
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                            <input type="hidden" name="itemId" value="@item.ItemId">
+                            <button type="submit" class="btn btn-primary">Delete</button>                   
+                        </form>
+                    </td>
+                </tr>
+            }*@
+            -->
+            <tr><td colspan="3" class="text-center bg-danger text-light"><h4>Starter</h4></td></tr>
+            @foreach(var item in @ViewBag.Starter)
+            {
+                <tr>
+                    <td>@item.ItemName </td>
+                    
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                            <input type="hidden" name="itemId" value="@item.ItemId">
+                            <button type="submit" class="btn btn-primary">Delete</button>                   
+                        </form>
+                    </td>
+                </tr>
+            }
+
+             <tr><td colspan="3" class="text-center bg-danger text-light"><h4>Main Course</h4></td></tr>
+            @foreach(var item in @ViewBag.MainCourse)
+            {
+                <tr>
+                    <td>@item.ItemName </td>
+                    
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                            <input type="hidden" name="itemId" value="@item.ItemId">
+                            <button type="submit" class="btn btn-primary">Delete</button>                   
+                        </form>
+                    </td>
+                </tr>
+            }
+
+            <tr><td colspan="3" class="text-center bg-danger text-light"><h4>Dessert</h4></td></tr>
+            @foreach(var item in @ViewBag.Dessert)
+            {
+                <tr>
+                    <td>@item.ItemName </td>
+                    
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                            <input type="hidden" name="itemId" value="@item.ItemId">
+                            <button type="submit" class="btn btn-primary">Delete</button>                   
+                        </form>
+                    </td>
+                </tr>
+            }
+
+            <tr><td colspan="3" class="text-center bg-danger text-light"><h4>Beverages</h4></td></tr>
+            @foreach(var item in @ViewBag.Beverages)
+            {
+                <tr>
+                    <td>@item.ItemName </td>
+                    
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-controller="Item" asp-action="DeleteItem" method="post">
+                            <input type="hidden" name="itemId" value="@item.ItemId">
+                            <button type="submit" class="btn btn-primary">Delete</button>                   
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else {
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Please Login...</strong>
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

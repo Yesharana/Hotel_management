@@ -1,31 +1,100 @@
-﻿@model Order
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+@model Order
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var total = 0;
 }
 
-<div class="container">
-    <p>@Model.OrderId</p>
-    <p>@ViewBag.ordItems.Count</p>
-    <table class="table table-striped">      
-            <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Amount</th>
-            </tr>      
-            @foreach(var item in @ViewBag.ordItems)
-            {
-                <tr>
-                    <td>@item.OrderedItem</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.UnitPrice</td>
-                    <td></td>
-                    
-                </tr>
-            }
+<style>
+    .billDetails, .btns{
+        display: flex;
+        justify-content: space-between;
         
-    </table>
-</div>
+    }
+
+    .bill {
+        border: 2px solid black;
+    }
+</style>
+
+@if(Accessor.HttpContext.Session.GetString("SUserName") != null)
+{
+    <div class="bill p-5">
+
+        <div class="billDetails">
+            <div class="Restaurant-details">
+                <h4>Food Hut</h4>
+                <p>Phone no: 123-456-789</p>
+                <p>Email: foodhut2022@@gmail.com</p>
+                <pre>Address: AppleView Complex
+College road, Nadiad
+                </pre>
+            </div>
+
+            <div class="Orders-details">
+                <h4>Order Id: @Model.OrderId</h4>
+                <p>Customer Name: @Model.CustomerName</p>
+                <p>Order Date: @Model.OrderDate</p>
+
+            </div>
+
+        </div>
+        <div class="container">
+        
+            <table class="table table-striped">      
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Amount</th>
+                    </tr>      
+                    @foreach(var item in @ViewBag.ordItems)
+                    {
+                    <tr>
+                        @{
+                            var amount = item.Quantity * item.UnitPrice;
+                            total += amount;
+                        }
+                            <td>@item.OrderedItem</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.UnitPrice</td>
+                            <td>@amount</td>
+                    
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total Amount:</td>
+                        <td>@total</td>
+                    </tr>
+                    
+            </table>
+            <div class="btns">
+                <button onclick="window.print()" class="btn btn-danger">Print</button>
+                <a class="btn btn-danger" asp-area="" asp-controller="User" asp-action="Index" style="color: white">Back to home</a>
+
+            </div>
+        </div>
+    </div>
+
+    
+}
+else 
+{
+    <div class="container" style="text-align: center">
+         <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login" style="color: white">Login</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Create" style="color: white">Sign Up</a>
+        </li>
+
+    </div>
+}

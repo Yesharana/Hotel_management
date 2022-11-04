@@ -1,20 +1,63 @@
-﻿@using Microsoft.AspNetCore.Http
-@inject IHttpContextAccessor Accessor
-
-@*
+﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    
-    if(Accessor.HttpContext.Session.GetString("SUserName") != null)
-    {
-        <h1>@Accessor.HttpContext.Session.GetString("SUserName")</h1>
-    }
-    else
-    {
-        <p>No User Signed In</p>
-    }
      
 }
 
-<h1>@Accessor.HttpContext.Session.GetString("SUserName")</h1>
+
+<style>
+    
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 44px;
+    background: url("https://t3.ftcdn.net/jpg/02/29/34/74/360_F_229347459_UV09dG0UTVflT7Spfkx6Uy9IkCeMubgF.jpg") no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+}
+
+    body::before {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        background-color: rgb(0,0,0,0.6);
+        z-index: 1;
+    }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 44px; /* Vertically center the text there */
+}
+
+.navbar {
+    z-index: 2;
+}
+
+
+.main-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+nav {
+    height: 60px;
+}
+</style>
+
+<div class=" main-text overlay text-white text-center image">
+        <div >
+            <h6 class="display-1 font-weight-bold mt-5">Food Hut</h6>
+            <h3 class="font-weight-light font-italic mb-3">Always fresh &amp; Delightful</h3>
+            <a asp-area="" asp-controller="Item" asp-action="Index" class="btn btn-lg btn-danger m-2">Order Here</a>
+            <a asp-area="" asp-controller="Item" asp-action="ViewAllItems" class="btn btn-lg btn-danger m-2">View Menu</a>
+            
+        </div>
+</div>

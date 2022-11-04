@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+@model Item
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@if(Accessor.HttpContext.Session.GetString("SUserName") != null)
+{
+    
+    <div class="row">
+        <div class="col-6">
+            <form asp-controller="Item" asp-action="AddItemHelper" asp-action="post">
+              <div class="mb-3">
+                <label for="ItemName" class="form-label">Item Name</label>
+                <input asp-for="ItemName" type="text" class="form-control" id="ItemName">
+              </div>
+
+              <div class="mb-3">
+                <label for="Catagory" class="form-label">Category</label>
+                <input asp-for="Catagory" type="string" class="form-control" id="Catagory">
+              </div>
+
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input asp-for="Price" type="number" class="form-control" id="price">
+              </div>
+          
+              <button type="submit" class="btn btn-primary">Add Item</button>
+            </form>
+        </div>
+
+    </div>
+}
+else {
+    <div class="container" style="text-align: center">
+         <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login" style="color: white">Login</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Create" style="color: white">Sign Up</a>
+        </li>
+
+    </div>
+}

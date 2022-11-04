@@ -12,6 +12,7 @@ namespace RestaurantManagement.Controllers
         // clear after submit
         static List<OrderItem> OItems = new List<OrderItem>();
         static bool isEmptyOrderList = false;
+        static string _categoryType = null;
         static Order orderDetails = new Order();
         public ItemController(ApplicationDbContext context)
         {
@@ -20,12 +21,19 @@ namespace RestaurantManagement.Controllers
 
         public IActionResult Index()
         {
-            var Items = new List<Item>();
-            Items = _context.Items.ToList();
+            var Items_ = new List<Item>();
+            if(_categoryType == null )
+            {
+                Items_ = _context.Items.ToList();
+            } else
+            {
+                Items_ = _context.Items.ToList().FindAll(m => String.Compare(m.Catagory, _categoryType) == 0);
+            }
 
             ViewBag.orderedItems = OItems;
             ViewBag.isEmptyOrderList = isEmptyOrderList;
-            return View(Items);           
+
+            return View(Items_);           
         }
 
         public IActionResult addItem(string item, int quantity)
@@ -137,9 +145,61 @@ namespace RestaurantManagement.Controllers
 
             Order ord = orderDetails;
             ViewBag.ordItems = ord.OrderItems.ToList();
-            //orderDetails = null;
-            //OItems.Clear();
+            orderDetails = null;
+            OItems.Clear();
+            _categoryType = null;
             return View(ord);
+        }
+
+        
+        public IActionResult Temp(string categoryType)
+        {
+            _categoryType = categoryType;
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult AddNewItem()
+        {
+            var newItem = new Item();
+            return View(newItem);
+        }
+        public IActionResult AddItemHelper(Item newItem)
+        {
+            _context.Items.Add(newItem);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(AddNewItem));
+        }
+
+        public IActionResult ViewAllItems()
+        {
+            //categories:
+            // Soup, Starter, Dessert, Beverages
+            //var allItems = _context.Items.ToList();
+
+            //var Soup = _context.Items.ToList().FindAll(m => String.Compare(m.Catagory, "Soup") == 0);
+            var MainCourse = _context.Items.ToList().FindAll(m => m.Catagory == "Main course");
+            var Starter = _context.Items.ToList().FindAll(m => m.Catagory == "Starter");
+            var Dessert = _context.Items.ToList().FindAll(m => m.Catagory == "Dessert");
+            var Beverages = _context.Items.ToList().FindAll(m => String.Compare(m.Catagory, "Beverages") == 0);
+
+            //ViewBag.Soup = Soup;
+            ViewBag.MainCourse = MainCourse;
+            ViewBag.Starter = Starter;
+            ViewBag.Dessert = Dessert;
+            ViewBag.Beverages = Beverages;
+
+            return View();
+            
+        }
+
+        public IActionResult DeleteItem(int itemId)
+        {
+            var item = _context.Items.Find(itemId);
+            if(item != null)
+            {
+                _context.Items.Remove(item);
+                _context.SaveChanges();
+            }
+            return RedirectToAction(nameof(ViewAllItems));
         }
     }
 }   
