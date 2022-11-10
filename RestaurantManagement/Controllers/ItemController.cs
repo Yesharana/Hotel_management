@@ -175,13 +175,13 @@ namespace RestaurantManagement.Controllers
             // Soup, Starter, Dessert, Beverages
             //var allItems = _context.Items.ToList();
 
-            //var Soup = _context.Items.ToList().FindAll(m => String.Compare(m.Catagory, "Soup") == 0);
+            var Soup = _context.Items.ToList().FindAll(m => String.Compare(m.Catagory, "Soup") == 0);
             var MainCourse = _context.Items.ToList().FindAll(m => m.Catagory == "Main course");
             var Starter = _context.Items.ToList().FindAll(m => m.Catagory == "Starter");
             var Dessert = _context.Items.ToList().FindAll(m => m.Catagory == "Dessert");
             var Beverages = _context.Items.ToList().FindAll(m => String.Compare(m.Catagory, "Beverages") == 0);
 
-            //ViewBag.Soup = Soup;
+            ViewBag.Soup = Soup;
             ViewBag.MainCourse = MainCourse;
             ViewBag.Starter = Starter;
             ViewBag.Dessert = Dessert;

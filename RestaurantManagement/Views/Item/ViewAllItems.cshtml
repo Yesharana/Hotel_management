@@ -25,9 +25,9 @@
         </thead>
 
         <tbody>
-            <!--
-            <tr colspan=3 ><h2>Soup</h2></tr>
-            @*@foreach(var item in @ViewBag.Soup)
+            
+            <tr><td colspan="3" class="text-center bg-danger text-light"><h4>Soup</h4></td></tr>
+            @foreach(var item in @ViewBag.Soup)
             {
                 <tr>
                     <td>@item.ItemName </td>
@@ -40,8 +40,7 @@
                         </form>
                     </td>
                 </tr>
-            }*@
-            -->
+            }
             <tr><td colspan="3" class="text-center bg-danger text-light"><h4>Starter</h4></td></tr>
             @foreach(var item in @ViewBag.Starter)
             {

@@ -20,10 +20,21 @@
                 <input asp-for="ItemName" type="text" class="form-control" id="ItemName">
               </div>
 
+              <!--
               <div class="mb-3">
                 <label for="Catagory" class="form-label">Category</label>
                 <input asp-for="Catagory" type="string" class="form-control" id="Catagory">
               </div>
+              -->
+
+              <select asp-for="Catagory" class="form-select" aria-label="Default select example">
+                  <option selected disabled>Select Category</option>
+                  <option value="Soup">Soup</option>
+                  <option value="Starter">Starter</option>
+                  <option value="Main course">Main Course</option>
+                  <option value="Dessert">Dessert</option>
+                  <option value="Beverages">Beverages</option>
+              </select>
 
               <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
@@ -37,14 +48,8 @@
     </div>
 }
 else {
-    <div class="container" style="text-align: center">
-         <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login" style="color: white">Login</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Create" style="color: white">Sign Up</a>
-        </li>
-
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Please Login...</strong>
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }

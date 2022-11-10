@@ -49,14 +49,8 @@
     </div>
 }
 else {
-    <div class="container" style="text-align: center">
-         <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login" style="color: white">Login</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Create" style="color: white">Sign Up</a>
-        </li>
-
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Please Login...</strong>
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
