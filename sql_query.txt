@@ -1,0 +1,48 @@
+Items:
+CREATE TABLE [dbo].[Items] (
+    [ItemId]   INT            IDENTITY (1, 1) NOT NULL,
+    [ItemName] NVARCHAR (MAX) NOT NULL,
+    [Catagory] NVARCHAR (MAX) NOT NULL,
+    [Price]    INT            NOT NULL,
+    CONSTRAINT [PK_Items] PRIMARY KEY CLUSTERED ([ItemId] ASC)
+);
+-----------------------------------------------------------------------
+OrderItem :
+CREATE TABLE [dbo].[OrderItem] (
+    [Id]          INT            IDENTITY (1, 1) NOT NULL,
+    [OrderedItem] NVARCHAR (MAX) NOT NULL,
+    [Quantity]    INT            NOT NULL,
+    [UnitPrice]   INT            NOT NULL,
+    [OrderId]     INT            NULL,
+    CONSTRAINT [PK_OrderItem] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_OrderItem_Orders_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [dbo].[Orders] ([OrderId])
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_OrderItem_OrderId]
+    ON [dbo].[OrderItem]([OrderId] ASC);
+
+-----------------------------------------------------------------------
+Orders:
+CREATE TABLE [dbo].[Orders] (
+    [OrderId]       INT            IDENTITY (1, 1) NOT NULL,
+    [OrderType]     NVARCHAR (MAX) NOT NULL,
+    [CustomerName]  NVARCHAR (MAX) NOT NULL,
+    [OrderStatus]   BIT            NOT NULL,
+    [PaymentStatus] BIT            NOT NULL,
+    [OrderDate]     DATETIME2 (7)  DEFAULT ('0001-01-01T00:00:00.0000000') NOT NULL,
+    CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([OrderId] ASC)
+);
+-----------------------------------------------------------------------
+Users:
+CREATE TABLE [dbo].[Users] (
+    [UserId]   INT            IDENTITY (1, 1) NOT NULL,
+    [UserName] NVARCHAR (MAX) NOT NULL,
+    [Email]    NVARCHAR (MAX) NOT NULL,
+    [Password] NVARCHAR (MAX) NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserId] ASC)
+);
+
+
+
