@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.Models;
 using System.Diagnostics;
-
+//home page
 namespace RestaurantManagement.Controllers
 {
     public class HomeController : Controller
