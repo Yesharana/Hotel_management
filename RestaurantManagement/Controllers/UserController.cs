@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.Data;
 using RestaurantManagement.Models;
+//user page
 
 namespace RestaurantManagement.Controllers
 {
