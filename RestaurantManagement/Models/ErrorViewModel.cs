@@ -7,3 +7,4 @@ namespace RestaurantManagement.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
+//
