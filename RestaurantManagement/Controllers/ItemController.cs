@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestaurantManagement.Data;
 using RestaurantManagement.Models;
+//home page
 
 namespace RestaurantManagement.Controllers
 {
